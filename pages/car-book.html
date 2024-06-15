@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Car</title>
+
+    <link rel="icon" href="../assets/images/favicon.png">
+
+
+    <link rel="stylesheet" href="../assets/css/car-details.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap-datepicker.css">
+</head>
+<body>
+
+    <div class="car-details-container">
+        <!-- Car details will be loaded here -->
+    </div>
+
+    <div class="booking-form-container">
+        <h2>Book this car</h2>
+        <form id="booking-form">
+            <div>
+                <label for="pickup_location">Pick-up Location:</label>
+                <select id="pickup_location" name="pickup_location" required></select>
+            </div>
+            <div>
+                <label for="dropoff_location">Drop-off Location:</label>
+                <select id="dropoff_location" name="dropoff_location" required></select>
+            </div>
+            <div>
+                <label for="pickup_date">Pick-up Date:</label>
+                <input type="text" id="pickup_date" name="pickup_date" class="datepicker" required>
+            </div>
+            <div>
+                <label for="dropoff_date">Drop-off Date:</label>
+                <input type="text" id="dropoff_date" name="dropoff_date" class="datepicker" required>
+            </div>
+            <div>
+                <label for="card_holder_name">Card Holder Name:</label>
+                <input type="text" id="card_holder_name" name="card_holder_name" required>
+            </div>
+            <div>
+                <label for="card_number">Credit Card Number:</label>
+                <input type="text" id="card_number" name="card_number" placeholder="1234 1234 1234 1234" required pattern="\d{4} \d{4} \d{4} \d{4}">
+            </div>
+            <div>
+                <label for="exp_date">Expiry Date:</label>
+                <input type="text" id="exp_date" name="exp_date" placeholder="MM/YY" required pattern="\d{2}/\d{2}">
+            </div>
+            <div>
+                <label for="ccv">CCV:</label>
+                <input type="text" id="ccv" name="ccv" placeholder="123" required pattern="\d{3}">
+            </div>
+            <div>
+                <label for="zip_code">Zip Code:</label>
+                <input type="text" id="zip_code" name="zip_code" placeholder="71300" required pattern="\d{5}">
+            </div>
+            <button type="submit">Book Now</button>
+        </form>
+    </div>
+
+    <script src="../assets/js/jquerry.min.js"></script>
+    <script src="../assets/js/jquery1.min.js"></script> 
+    <script src="../assets/js/bootstrap-datepicker.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Initialize datepicker for pick-up and drop-off dates
+            $('.datepicker').datepicker({
+                format: 'yyyy-mm-dd', // You can change the date format as needed
+                autoclose: true
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Function to get URL parameters
+            function getURLParameter(name) {
+                return new URLSearchParams(window.location.search).get(name);
+            }
+    
+            // Function to display car details
+            function displayCarDetails(carData) {
+                var detailsHTML = `
+                    <h1>${carData.name} - ${carData.manufacturer}</h1>
+                    <img src="../assets/images/${carData.image}" alt="${carData.name}" style="width:100%;">
+                    <p>${carData.name}</p>
+                    <p>Price: ${carData.price}</p>
+                    <p>Mileage: ${carData.mileage}</p>
+                    <p>Transmission: ${carData.transmission}</p>
+                    <p>Seats: ${carData.seats}</p>
+                    <p>Luggage: ${carData.luggage}</p>
+                    <p>Fuel: ${carData.fuel}</p>
+                    <ul>
+                        ${carData.features.map(feature => `<li>${feature}</li>`).join('')}
+                    </ul>
+                    <p>${carData.description}</p>
+                `;
+                document.querySelector('.car-details-container').innerHTML = detailsHTML;
+            }
+    
+            // Get the car ID from URL parameters
+            var carId = getURLParameter('id');
+    
+            // Fetch car data based on the car ID
+            fetch('../data-json/cars.json')
+                .then(response => response.json())
+                .then(data => {
+                    const carData = data.find(car => car.id == carId);
+                    displayCarDetails(carData);
+                });
+    
+            // Fetch locations data
+            fetch('../data-json/locations.json')
+                .then(response => response.json())
+                .then(locations => {
+                    const pickupSelect = document.getElementById('pickup_location');
+                    const dropoffSelect = document.getElementById('dropoff_location');
+                    locations.forEach(location => {
+                        let option = document.createElement('option');
+                        option.value = location.id;
+                        option.text = location.name_point + ', ' + location.address + ', ' + location.town;
+                        pickupSelect.add(option);
+    
+                        let dropOption = option.cloneNode(true);
+                        dropoffSelect.add(dropOption);
+                    });
+                });
+    
+            function validateForm(formData) {
+                const cardNumberPattern = /^\d{4} \d{4} \d{4} \d{4}$/;
+                const expDatePattern = /^\d{2}\/\d{2}$/;
+                const ccvPattern = /^\d{3}$/;
+                const zipCodePattern = /^\d{5}$/;
+
+                if (!cardNumberPattern.test(formData.card_number)) {
+                    alert("Invalid card number format. Please enter in the format 1234 1234 1234 1234.");
+                    return false;
+                }
+                if (!expDatePattern.test(formData.exp_date)) {
+                    alert("Invalid expiry date format. Please enter in the format MM/YY.");
+                    return false;
+                }
+                if (!ccvPattern.test(formData.ccv)) {
+                    alert("Invalid CCV format. Please enter a 3-digit CCV.");
+                    return false;
+                }
+                if (!zipCodePattern.test(formData.zip_code)) {
+                    alert("Invalid zip code format. Please enter a 5-digit zip code.");
+                    return false;
+                }
+                return true;
+            }
+
+            function addBooking(data) {
+                $.ajax({
+                    url: "http://localhost/rent-a-car-app/backend/api/bookings",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify(data),
+                    success: function (response) {
+                        console.log(response);
+                        alert("Booking added successfully!");
+                    },
+                    error: function (error) {
+                        console.error('Failed to add booking:', error.statusText);
+                        alert("Failed to add booking. Please try again later.");
+                    }
+                });
+            }
+            
+            // Handle form submission
+            $('#booking-form').submit(function (event) {
+                event.preventDefault();
+            
+                // Replace with a valid user ID for testing
+                var userId = 27;
+            
+                var formData = {
+                    car_id: carId,
+                    user_id: userId,
+                    pickup_location: $('#pickup_location').val(),
+                    dropoff_location: $('#dropoff_location').val(),
+                    pickup_date: $('#pickup_date').val(),
+                    dropoff_date: $('#dropoff_date').val(),
+                    card_holder_name: $('#card_holder_name').val(),
+                    card_number: $('#card_number').val(),
+                    exp_date: $('#exp_date').val(),
+                    ccv: $('#ccv').val(),
+                    zip_code: $('#zip_code').val()
+                };
+            
+                console.log('Form Data:', formData);
+            
+                if (validateForm(formData)) {
+                    addBooking(formData);
+                }
+            });
+        });
+        
+    </script>
+    
+</body>
+</html>

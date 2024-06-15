@@ -1,0 +1,127 @@
+/* car-details.css */
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('../../assets/images/bg_2.jpg'); /* Adjust the path as necessary */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center; /* Center text globally */
+}
+
+/* Car Details Container */
+.car-details-container {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    margin: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Headings */
+.car-details-container h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: bold; /* Make text bold */
+}
+
+/* Images */
+.car-details-container img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Paragraphs */
+.car-details-container p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 10px;
+    font-weight: bold; /* Make text bold */
+}
+
+/* Price Paragraph */
+.car-details-container p:nth-of-type(2) {
+    font-weight: bold;
+    color: #222;
+}
+
+/* Unordered List */
+.car-details-container ul {
+    list-style-type: disc;
+    margin-left: 0;
+    margin-bottom: 10px;
+    padding-left: 0;
+    display: inline-block; /* Ensure list items are centered */
+    text-align: left; /* Align text to the left within the list */
+}
+
+.car-details-container ul li {
+    margin-bottom: 5px;
+    color: #555;
+}
+
+/* Booking Form Container */
+.booking-form-container {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    margin: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Booking Form Heading */
+.booking-form-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: bold; /* Make text bold */
+}
+
+/* Form Inputs and Labels */
+.booking-form-container label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold; /* Make text bold */
+}
+
+.booking-form-container input[type="text"],
+.booking-form-container select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Submit Button */
+.booking-form-container button[type="submit"] {
+    background-color: #007bff; /* Blue button color */
+    color: #fff; /* White text color */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s; /* Smooth transition for button color change */
+}
+
+.booking-form-container button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
+}

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+ 
+  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./assets/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/animate.css">
+    
+    <link rel="stylesheet" href="./assets/css/magnific-popup.css">
+
+    <link rel="stylesheet" href="./assets/css/aos.css">
+
+    <link rel="stylesheet" href="./assets/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="./assets/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="./assets/css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="./assets/css/flaticon.css">
+    <link rel="stylesheet" href="./assets/css/icomoon.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+	  <link rel="stylesheet" href="./assets/css/spapp.css"> 
+    <link rel="stylesheet" href="./assets/css/jQuerySPApp.css">
+
+
+
+<div class="hero-wrap ftco-degree-bg" style="background-image: url('assets/images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text justify-content-start align-items-center justify-content-center">
+        <div class="col-lg-8 ftco-animate">
+            <div class="text w-100 text-center mb-md-5 pb-md-5">
+              <h1 class="mb-4">Fast &amp; Easy Way To Rent A Car</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <section class="ftco-section ftco-no-pt bg-light">
+      <div class="container">
+          <div class="row no-gutters">
+              <div class="col-md-12	featured-top">
+                  <div class="row no-gutters">
+                        <div class="col-md-4 d-flex align-items-center">
+                          <form id="rent-form" class="request-form ftco-animate bg-primary" method="post">
+                            <h2>Make your trip</h2>
+                            <div class="form-group">
+                                <label for="pick-up-location" class="label">Pick-up location</label>
+                                <input type="text" class="form-control" placeholder="City, Airport, Station, etc" id="pick-up-location" name="pick-up-location">
+                            </div>
+                            <div class="form-group">
+                                <label for="drop-off-location" class="label">Drop-off location</label>
+                                <input type="text" class="form-control" placeholder="City, Airport, Station, etc" id="drop-off-location" name="drop-off-location">
+                            </div>
+                            <div class="d-flex">
+                                <div class="form-group mr-2">
+                                    <label for="pick-up-date" class="label">Pick-up date</label>
+                                    <input type="text" class="form-control" id="pick-up-date" name="pick-up-date" placeholder="Date">
+                                </div>
+                                <div class="form-group ml-2">
+                                    <label for="drop-off-date" class="label">Drop-off date</label>
+                                    <input type="text" class="form-control" id="drop-off-date" name="drop-off-date" placeholder="Date">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="pick-up-time" class="label">Pick-up time</label>
+                                <input type="text" class="form-control" id="pick-up-time" name="pick-up-time" placeholder="Time">
+                            </div>
+                            <div class="form-group">
+                              <a href="#car" class="btn btn-secondary py-3 px-4">Rent A Car Now</a>
+                            </div>
+                        </form>
+                        
+                        </div>
+                        <div class="col-md-8 d-flex align-items-center">
+                            <div class="services-wrap rounded-right w-100">
+                                <h3 class="heading-section mb-4">Better Way to Rent Your Perfect Cars</h3>
+                                <div class="row d-flex mb-4">
+                            <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                              <div class="services w-100 text-center">
+                                <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
+                                <div class="text w-100">
+                                  <h3 class="heading mb-2">Choose Your Pickup Location</h3>
+                              </div>
+                              </div>      
+                            </div>
+                            <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                              <div class="services w-100 text-center">
+                                <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-handshake"></span></div>
+                                <div class="text w-100">
+                                  <h3 class="heading mb-2">Select the Best Deal</h3>
+                                </div>
+                              </div>      
+                            </div>
+                            <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                              <div class="services w-100 text-center">
+                                <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-rent"></span></div>
+                                <div class="text w-100">
+                                  <h3 class="heading mb-2">Reserve Your Rental Car</h3>
+                                </div>
+                              </div>      
+                            </div>
+                          </div>
+                          <p><a href="#car" class="btn btn-primary py-3 px-4">Reserve Your Perfect Car</a></p>
+                            </div>
+                        </div>
+                    </div>
+              </div>
+        </div>
+  </section>
+
+  <script>
+    // Fetch pick-up and drop-off locations from JSON file
+    fetch('./data-json/locations.json')
+        .then(response => response.json())
+        .then(locations => {
+            const pickUpInput = document.getElementById('pick-up-location');
+            const dropOffInput = document.getElementById('drop-off-location');
+
+            // Populate pick-up and drop-off location inputs with data from JSON
+            locations.forEach(location => {
+                // Create option element for pick-up location
+                const pickUpOption = document.createElement('option');
+                pickUpOption.value = location.id;
+                pickUpOption.textContent = location.name_point + ', ' + location.address + ', ' + location.town;
+                pickUpInput.appendChild(pickUpOption);
+
+                // Create option element for drop-off location
+                const dropOffOption = document.createElement('option');
+                dropOffOption.value = location.id;
+                dropOffOption.textContent = location.name_point + ', ' + location.address + ', ' + location.town;
+                dropOffInput.appendChild(dropOffOption);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching locations:', error);
+        });
+</script>
+
+
+
+  <!-- loader -->
+   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="./assets/js/jquery1.min.js"></script> 
+  <script src="./assets/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="./assets/js/popper.min.js"></script>
+  <script src="./assets/js/bootstrap.min.js"></script>
+  <script src="./assets/js/jquery.easing.1.3.js"></script>
+  <script src="./assets/js/jquery.waypoints.min.js"></script>
+  <script src="./assets/js/jquery.stellar.min.js"></script>
+  <script src="./assets/js/owl.carousel.min.js"></script>
+  <script src="./assets/js/jquery.magnific-popup.min.js"></script>
+  <script src="./assets/js/aos.js"></script>
+  <script src="./assets/js/jquery.animateNumber.min.js"></script>
+  <script src="./assets/js/bootstrap-datepicker.js"></script>
+  <script src="./assets/js/jquery.timepicker.min.js"></script>
+  <script src="./assets/js/scrollax.min.js"></script>
+  <script src="./assets/js/main.js"></script> 
+
+  <script src="./assets/js/jquerry.min.js"></script>
+  <script src="./assets/js/jquery.spapp.min.js"></script>
+  <script src="./assets/js/jQuerySPApp.js"></script> 
+
+  <script src="./assets/js/block-ui.js"></script>
+  <script src="./assets/js/jquery.validate.min.js"></script>
+  <script src="./assets/js/form.js"></script>
+  <script src="./assets/js/locations.js"></script>
+
+</html>
+</body>

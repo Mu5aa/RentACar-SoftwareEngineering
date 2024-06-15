@@ -1,0 +1,101 @@
+#rental-details-heading {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#rental-details-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#rental-details-table th,
+#rental-details-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#rental-details-table th {
+    background-color: #f2f2f2;
+}
+
+/* Styles for the payment section */
+.payment-section {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for the payment details heading */
+.payment-details-heading h1 {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Styles for the payment info container */
+.payment-info-container {
+    text-align: center;
+}
+
+/* Styles for the payment form fields */
+.payment-info-container input[type="text"],
+.payment-info-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Styles for the payment button */
+.payment-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 10px auto;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.payment-button:hover {
+    background-color: #0056b3;
+}
+
+/* Styles for the payment logo */
+.SedanPaymentLogo img {
+    max-width: 100px;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#edit-rent-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 10px auto;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Remove underline from the button */
+    font-size: 16px;
+}
+
+#edit-rent-button:hover {
+    background-color: #0056b3; /* Darker color on hover */
+}

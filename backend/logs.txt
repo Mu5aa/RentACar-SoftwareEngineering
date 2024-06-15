@@ -1,0 +1,13 @@
+2024-06-03 20:17:55 - SQLSTATE[42S22]: Column not found: 1054 Unknown column 'password' in 'field list' - Code: 42S22
+2024-06-03 20:20:31 - SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1234 1234 1234 1234' for key 'bookings.card_number_UNIQUE' - Code: 23000
+2024-06-03 20:20:38 - SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1234 1234 1234 1234' for key 'bookings.card_number_UNIQUE' - Code: 23000
+2024-06-03 20:39:52 - Call to undefined method BookingDao::get_by_id() - Code: 0
+2024-06-03 20:40:00 - Call to undefined method BookingDao::get_by_id() - Code: 0
+2024-06-03 20:40:01 - Call to undefined method BookingDao::get_by_id() - Code: 0
+2024-06-03 20:41:26 - Call to undefined method BookingService::getById() - Code: 0
+2024-06-03 20:42:08 - Call to undefined method BookingDao::get_by_id() - Code: 0
+2024-06-03 20:43:03 - Call to undefined method BookingDao::get_by_id() - Code: 0
+2024-06-03 20:44:26 - Call to undefined method BookingDao::get_by_id() - Code: 0
+2024-06-03 20:45:29 - Call to undefined method ReviewDao::get_by_id() - Code: 0
+2024-06-03 23:02:10 - Call to undefined method BookingDao::get_by_id() - Code: 0
+2024-06-03 23:32:38 - Undefined array key "email" - Code: 2

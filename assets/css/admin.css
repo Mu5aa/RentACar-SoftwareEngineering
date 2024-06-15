@@ -1,0 +1,52 @@
+/* styles.css */
+
+body {
+    background-image: url(../images/bg_2.jpg);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h1, h5 {
+    color: white;
+    font-weight: bold;
+    text-align: center; /* Center align headings */
+}
+
+.button {
+    display: block; /* Change display to block */
+    width: fit-content; /* Set width to fit content */
+    margin: 0 auto 10px; /* Center horizontally and add margin bottom */
+    margin-top: 20px;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.modal-body, .modal-footer {
+    text-align: center; /* Center align modal body and footer */
+}
+
+.modal-dialog {
+    margin: 100px auto; /* Center modal vertically and horizontally */
+}
+
+.modal-title {
+    color: #007bff; /* Change modal title color */
+    font-weight: bold;
+}
+
+.modal-content {
+    background-color: #f8f9fa; /* Change modal background color */
+}
+
+.modal-footer {
+    justify-content: center; /* Center align buttons in modal footer */
+}

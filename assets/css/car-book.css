@@ -1,0 +1,54 @@
+/* car-book.css */
+
+/* Booking Form Container */
+.booking-form-container {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    margin: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Booking Form Heading */
+.booking-form-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: bold; /* Make text bold */
+}
+
+/* Form Inputs and Labels */
+.booking-form-container label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold; /* Make text bold */
+}
+
+.booking-form-container input[type="text"],
+.booking-form-container select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Submit Button */
+.booking-form-container button[type="submit"] {
+    background-color: #007bff; /* Blue button color */
+    color: #fff; /* White text color */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s; /* Smooth transition for button color change */
+}
+
+.booking-form-container button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
+}

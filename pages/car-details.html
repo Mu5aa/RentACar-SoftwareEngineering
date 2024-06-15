@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Details</title>
+
+    <link rel="icon" href="../assets/images/favicon.png">
+
+    <link rel="stylesheet" href="../assets/css/car-details.css">
+</head>
+<body>
+
+    <div class="car-details-container">
+        <!-- Car details will be loaded here -->
+    </div>
+
+    <script src="../assets/js/jquery-3.2.1.min.js"></script>
+
+    <script src="../assets/js/jquerry.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Function to get URL parameters
+            function getURLParameter(name) {
+                return new URLSearchParams(window.location.search).get(name);
+            }
+        
+            // Function to display car details
+            function displayCarDetails(carData) {
+                var detailsHTML = `
+                    <h1>${carData.name} - ${carData.manufacturer}</h1>
+                    <img src="../assets/images/${carData.image}" alt="${carData.name}" style="width:100%;">
+                    <p>${carData.name}</p>
+                    <p>Price: ${carData.price}</p>
+                    <p>Mileage: ${carData.mileage}</p>
+                    <p>Transmission: ${carData.transmission}</p>
+                    <p>Seats: ${carData.seats}</p>
+                    <p>Luggage: ${carData.luggage}</p>
+                    <p>Fuel: ${carData.fuel}</p>
+                    <ul>
+                        ${carData.features.map(feature => `<li>${feature}</li>`).join('')}
+                    </ul>
+                    <p>${carData.description}</p>
+                `;
+                document.querySelector('.car-details-container').innerHTML = detailsHTML;
+            }
+        
+            // Get the car ID from URL parameters
+            var carId = getURLParameter('id');
+        
+            // Fetch car data based on the car ID
+            fetch('../data-json/cars.json')
+                .then(response => response.json())
+                .then(data => {
+                    const carData = data.find(car => car.id == carId);
+                    displayCarDetails(carData);
+                });
+        });
+    </script>
+</body>
+</html>
