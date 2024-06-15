@@ -27,7 +27,7 @@ class Config {
         return Config::get_env("DB_USER", 'root');
     }
     public static function DB_PASSWORD() {
-        return Config::get_env("DB_PASSWORD", 'root');
+        return Config::get_env("DB_PASSWORD", '');
     }
     public static function DB_HOST() {
         return Config::get_env("DB_HOST", '127.0.0.1');
@@ -35,6 +35,23 @@ class Config {
     public static function JWT_SECRET() {
         return Config::get_env("DB_HOST", 'd;Tef?mM5V_n*L(-{*L@.0&21rxN}C');
     }
+    // SMTP Configuration
+    public static function SMTP_HOST() {
+        return Config::get_env("SMTP_HOST", 'smtp.eu.mailgun.org');
+    }
+    public static function SMTP_USERNAME() {
+        return Config::get_env("SMTP_USERNAME", 'postmaster@mg.mustafaajan.tech');
+    }
+    public static function SMTP_PASSWORD() {
+        return Config::get_env("SMTP_PASSWORD", 'b77b36a621846334929fc626bf9d2c26-32a0fef1-2fe868ff');
+    }
+    public static function SMTP_PORT() {
+        return Config::get_env("SMTP_PORT", 465);
+    }
+    public static function SMTP_ENCRYPTION() {
+        return Config::get_env("SMTP_ENCRYPTION", 'tls');
+    }
+
     public static function get_env($name, $default){
         return isset($_ENV[$name]) && trim($_ENV[$name]) != "" ? $_ENV[$name] : $default;
     }

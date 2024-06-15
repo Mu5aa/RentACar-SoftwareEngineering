@@ -35,7 +35,17 @@
             <button type="submit" class="login-button" href="#pocetna">Login</button>
         </div>
         <div class="signup-link">
-            <a href="http://localhost/rent-a-car-app/pages/register.html">Need an account? Sign Up!</a>
+            <a href="http://localhost/RentACar-SoftwareEngineering/pages/register.html">Need an account? Sign Up!</a>
+        </div>
+    </form>
+
+    <form id="2fa-form" style="display:none;">
+        <div class="field">
+            <input id="2fa-code" type="text" name="2fa-code" required>
+            <label for="2fa-code">2FA Code</label>
+        </div>
+        <div class="field">
+            <button type="submit" class="verify-2fa-button">Verify</button>
         </div>
     </form>
     </div>
@@ -62,20 +72,47 @@
   }
 
   // Function to handle form submission
-function handleFormSubmit(event) {
-  event.preventDefault(); // Prevent the default form submission
+  function handleFormSubmit(event) {
+    event.preventDefault(); // Prevent the default form submission
 
-  // Get the form data
-  var formData = $("#login-form").serialize();
+    // Get the form data
+    var formData = $("#login-form").serialize();
 
-  // Perform your custom validation here
-  var isValid = true; // Replace with actual validation logic
+    // Perform your custom validation here
+    var isValid = true; // Replace with actual validation logic
 
-  if (isValid) {
+    if (isValid) {
+      Utils.block_ui("#login-form-container");
+      RestClient.post(
+        'auth/login',
+        formData,
+        function (response) {
+          Utils.unblock_ui("#login-form-container");
+          $("#login-form").hide();
+          $("#2fa-form").show();
+          toastr.success("Verification code sent to your email. Please enter the code to continue.");
+        },
+        function (error) {
+          Utils.unblock_ui("#login-form-container");
+          toastr.error(error.responseText);
+        }
+      );
+    } else {
+      // Handle validation errors
+      toastr.error("Validation failed");
+    }
+  }
+
+  // Function to handle 2FA form submission
+  function handle2FASubmit(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Get the form data
+    var formData = $("#2fa-form").serialize();
+
     Utils.block_ui("#login-form-container");
-    console.log("amir");
     RestClient.post(
-      'auth/login',
+      'auth/verify-2fa',
       formData,
       function (response) {
         Utils.unblock_ui("#login-form-container");
@@ -87,16 +124,13 @@ function handleFormSubmit(event) {
         toastr.error(error.responseText);
       }
     );
-  } else {
-    // Handle validation errors
-    toastr.error("Validation failed");
   }
-}
 
-// Attach the submit event handler to the form
-$(document).ready(function () {
-  $("#login-form").on("submit", handleFormSubmit);
-});
+  // Attach the submit event handlers to the forms
+  $(document).ready(function () {
+    $("#login-form").on("submit", handleFormSubmit);
+    $("#2fa-form").on("submit", handle2FASubmit);
+  });
 
 </script>
 

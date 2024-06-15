@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "name_point": "Downtown Pickup",
+        "address": "123 Main St",
+        "town": "Springfield",
+        "email": "downtown@carrental.com",
+        "phone": "555-1234",
+        "date_available": "2024-05-25"
+    },
+    {
+        "id": 2,
+        "name_point": "Airport Pickup",
+        "address": "456 Airport Rd",
+        "town": "Springfield",
+        "email": "airport@carrental.com",
+        "phone": "555-5678",
+        "date_available": "2024-05-25"
+    },
+    {
+        "id": 3,
+        "name_point": "Suburban Pickup",
+        "address": "789 Suburb Ln",
+        "town": "Springfield",
+        "email": "suburban@carrental.com",
+        "phone": "555-9012",
+        "date_available": "2024-05-25"
+    }
+]

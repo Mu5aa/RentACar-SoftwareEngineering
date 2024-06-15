@@ -25,7 +25,7 @@ function registerUser() {
 
     console.log('Data being sent:', data);
 
-    fetch('http://localhost/rent-a-car-app/backend/api/users', {
+    fetch('http://localhost/RentACar-SoftwareEngineering/backend/api/users', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

@@ -3,7 +3,7 @@ var carData;
 var usersData;
 
 function getCars() {
-  $.get("http://localhost/rent-a-car-app/backend/api/cars", function (data) {
+  $.get("http://localhost/RentACar-SoftwareEngineering/backend/api/cars", function (data) {
     carData = data;
     console.log(carData);
     displayCars(carData);
@@ -11,7 +11,7 @@ function getCars() {
 }
 
 function getUsers() {
-  $.get("http://localhost/rent-a-car-app/backend/api/users", function (data) {
+  $.get("http://localhost/RentACar-SoftwareEngineering/backend/api/users", function (data) {
     usersData = data;
     displayUsers(usersData);
   });

@@ -1,5 +1,3 @@
-/* car-details.css */
-
 /* Global Styles */
 body {
     font-family: Arial, sans-serif;
@@ -123,5 +121,24 @@ body {
 }
 
 .booking-form-container button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
+}
+
+/* Edit Rental Button */
+button.btn.btn-primary {
+    background-color: #007bff; /* Blue button color */
+    color: #fff; /* White text color */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s; /* Smooth transition for button color change */
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold; /* Make text bold */
+}
+
+button.btn.btn-primary:hover {
     background-color: #0056b3; /* Darker blue color on hover */
 }

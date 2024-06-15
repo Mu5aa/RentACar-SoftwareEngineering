@@ -2,7 +2,7 @@
 
 require __DIR__ . '/../../../vendor/autoload.php';
 
-define('BASE_URL', 'http://localhost/rent-a-car-app/backend/');
+define('BASE_URL', 'http://localhost/RentACar-SoftwareEngineering/backend/');
 
 error_reporting(0);
 
