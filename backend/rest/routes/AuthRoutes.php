@@ -6,6 +6,26 @@ use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
 Flight::set('auth_service', new AuthService());
+// Start output buffering
+ob_start();
+
+// Clean (erase) the output buffer
+ob_clean();
+
+// Allow from any origin
+header("Access-Control-Allow-Origin: *");
+
+// Allow specific HTTP methods
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+
+// Allow specific headers
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
+// Check for OPTIONS request and return 200 response
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
 
 Flight::group('/auth', function() {
 
@@ -136,3 +156,5 @@ Flight::group('/auth', function() {
     });
 
 });
+ob_end_clean();
+
