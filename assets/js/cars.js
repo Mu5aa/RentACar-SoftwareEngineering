@@ -45,9 +45,9 @@ $(document).ready(function () {
     // Function to display car details and redirect based on destination
     function displayCarDetails(carId, destination) {
         if (destination === "details") {
-            window.location.href = "../RentACar-SoftwareEngineering/pages/car-details.html?id=" + carId;
+            window.location.href = "https://rent-a-car-software-engineering-my43e757e.vercel.app/pages/car-details.html?id=" + carId;
         } else if (destination === "book") {
-            window.location.href = "../RentACar-SoftwareEngineering/pages/car-book.html?id=" + carId;
+            window.location.href = "https://rent-a-car-software-engineering-my43e757e.vercel.app/pages/car-book.html?id=" + carId;
         } else {
             console.error("Invalid destination specified.");
         }

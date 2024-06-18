@@ -26,7 +26,7 @@ function registerUser() {
     console.log('Data being sent:', data);
 
     // Send data to server
-    fetch('http://localhost/RentACar-SoftwareEngineering/backend/api/users', {
+    fetch('https://rent-a-car-software-engineering-my43e757e.vercel.app/backend/api/users', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

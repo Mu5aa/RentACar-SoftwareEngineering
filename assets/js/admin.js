@@ -3,7 +3,7 @@ if (token){
     $(document).ready(function () {
         function addCar(data) {
             $.ajax({
-                url: "http://localhost/RentACar-SoftwareEngineering/backend/api/cars",
+                url: "https://rent-a-car-software-engineering-my43e757e.vercel.app/backend/api/cars",
                 type: "POST",
                 contentType: "application/json",
                 data: JSON.stringify(data),
@@ -47,7 +47,7 @@ if (token){
       
         function deleteCar(carId) {
             $.ajax({
-                url: "http://localhost/RentACar-SoftwareEngineering/backend/api/cars/" + carId,
+                url: "https://rent-a-car-software-engineering-my43e757e.vercel.app/backend/api/cars/" + carId,
                 type: "DELETE",
                 success: function (response) {
                     console.log(response);
@@ -69,7 +69,7 @@ if (token){
         function updateCar(carId, updatedCarData) {
           console.log(updatedCarData);
             $.ajax({
-                url: "http://localhost/RentACar-SoftwareEngineering/backend/api/cars/" + carId,
+                url: "https://rent-a-car-software-engineering-my43e757e.vercel.app/backend/api/cars/" + carId,
                 type: "PUT",
                 contentType: "application/json",
                 data: JSON.stringify(updatedCarData),
@@ -104,7 +104,7 @@ if (token){
       
         function addLocation(data) {
             $.ajax({
-                url: "http://localhost/RentACar-SoftwareEngineering/backend/api/locations",
+                url: "https://rent-a-car-software-engineering-my43e757e.vercel.app/backend/api/locations",
                 type: "POST",
                 contentType: "application/json",
                 data: JSON.stringify(data),
@@ -143,7 +143,7 @@ if (token){
       
         function deleteLocation(locationId) {
           $.ajax({
-              url: "http://localhost/RentACar-SoftwareEngineering/backend/api/locations/" + locationId,
+              url: "https://rent-a-car-software-engineering-my43e757e.vercel.app/backend/api/locations/" + locationId,
               type: "DELETE",
               success: function (response) {
                   console.log(response);
@@ -164,7 +164,7 @@ if (token){
       
           function updateLocation(locationId, updatedLocationData) {
               $.ajax({
-                  url: "http://localhost/RentACar-SoftwareEngineering/backend/api/locations/" + locationId,
+                  url: "https://rent-a-car-software-engineering-my43e757e.vercel.app/backend/api/locations/" + locationId,
                   type: "PUT",
                   contentType: "application/json",
                   data: JSON.stringify(updatedLocationData),
@@ -196,7 +196,7 @@ if (token){
       
       $('#getAllUsersModal').click(function () {
           $.ajax({
-              url: "http://localhost/RentACar-SoftwareEngineering/backend/api/users",
+              url: "https://rent-a-car-software-engineering-my43e757e.vercel.app/backend/api/users",
               type: "GET",
               headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -225,7 +225,7 @@ if (token){
       
       function addUser(data) {
           $.ajax({
-              url: "http://localhost/RentACar-SoftwareEngineering/backend/api/users",
+              url: "https://rent-a-car-software-engineering-my43e757e.vercel.app/backend/api/users",
               type: "POST",
               contentType: "application/json",
               data: JSON.stringify(data),
@@ -265,7 +265,7 @@ if (token){
       
           function deleteUser(userId) {
               $.ajax({
-                  url: "http://localhost/RentACar-SoftwareEngineering/backend/api/users/" + userId,
+                  url: "https://rent-a-car-software-engineering-my43e757e.vercel.app/backend/api/users/" + userId,
                   type: "DELETE",
                   success: function (response) {
                       console.log(response);
@@ -289,7 +289,7 @@ if (token){
             var token = localStorage.getItem("token");
             console.log("Token from localStorage:", token);
             $.ajax({
-                url: "http://localhost/RentACar-SoftwareEngineering/backend/api/bookings",
+                url: "https://rent-a-car-software-engineering-my43e757e.vercel.app/backend/api/bookings",
                 type: "GET",
                 headers: {
                     Authorization: "Bearer " + token,
