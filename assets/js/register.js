@@ -25,6 +25,7 @@ function registerUser() {
 
     console.log('Data being sent:', data);
 
+    // Send data to server
     fetch('http://localhost/RentACar-SoftwareEngineering/backend/api/users', {
         method: 'POST',
         headers: {
@@ -32,23 +33,26 @@ function registerUser() {
         },
         body: JSON.stringify(data)
     })
-    .then(response => {
-        if (!response.ok) {
-            return response.text().then(text => { throw new Error(text); });
+    .then(response => response.text())  // First convert to text
+    .then(text => {
+        try {
+            // Try to parse it as JSON
+            const data = JSON.parse(text);
+            if (data.error) {
+                throw new Error(data.error);
+            }
+            messageElement.textContent = 'Registration successful!';
+            console.log(data);
+        } catch (error) {
+            // If parsing fails, it's likely HTML
+            console.error("Received HTML response from the server: ", text);
+            messageElement.textContent = 'Server error occurred. Please check the console for more details.';
         }
-        return response.json();
-    })
-    .then(data => {
-        messageElement.textContent = 'Registration successful!';
     })
     .catch(error => {
+        console.error('Fetch error:', error.message);
         messageElement.textContent = `Error: ${error.message}`;
     });
-}s
+    
+}
 
-// TODO dodati success message / error za registraciju i provjeriti ovo 
-
-// .catch(error => {
-//     messageElement.textContent = `Error: ${error.message}`;
-// });
-// }s

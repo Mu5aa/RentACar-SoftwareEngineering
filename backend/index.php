@@ -1,6 +1,6 @@
 <?php
 
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 // import and register all business logic files (services) to FlightPHP
 require_once __DIR__ . '/rest/services/UserService.class.php';

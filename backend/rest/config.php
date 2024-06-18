@@ -40,13 +40,13 @@ class Config {
         return Config::get_env("SMTP_HOST", 'smtp.eu.mailgun.org');
     }
     public static function SMTP_USERNAME() {
-        return Config::get_env("SMTP_USERNAME", 'postmaster@mg.mustafaajan.tech');
+        return Config::get_env("SMTP_USERNAME", 'postmaster@mg.arnelasssd.tech');
     }
     public static function SMTP_PASSWORD() {
-        return Config::get_env("SMTP_PASSWORD", 'b77b36a621846334929fc626bf9d2c26-32a0fef1-2fe868ff');
+        return Config::get_env("SMTP_PASSWORD", '7c434503e3ee16d69094db1232694565-ed54d65c-2cfe3412');
     }
     public static function SMTP_PORT() {
-        return Config::get_env("SMTP_PORT", 465);
+        return Config::get_env("SMTP_PORT", 587);
     }
     public static function SMTP_ENCRYPTION() {
         return Config::get_env("SMTP_ENCRYPTION", 'tls');
